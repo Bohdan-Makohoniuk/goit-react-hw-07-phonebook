@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://638c73fdd2fc4a058a580842.mockapi.io';
 
@@ -9,6 +10,9 @@ export const fetchContacts = createAsyncThunk(
   async thunkApi => {
     try {
       const response = await axios.get('/contacts');
+      toast.success(
+          `was successfully added to your contacts.`
+        );
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

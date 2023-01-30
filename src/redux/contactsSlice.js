@@ -37,9 +37,9 @@ const contactsSlice = createSlice({
         state.contacts.isLoading = false;
         state.error = null;
         state.contacts.items.push(action.payload);
-        toast.success(
-          `${action.payload.name} was successfully added to your contacts.`
-        );
+        // toast.success(
+        //   `${action.payload.name} was successfully added to your contacts.`
+        // );
       })
       .addCase(addContact.rejected, handleRejected)
       .addCase(deleteContact.pending, handlePending)
@@ -51,7 +51,7 @@ const contactsSlice = createSlice({
           contact => contact.id === action.payload.id
         );
         state.contacts.items.splice(index, 1);
-        toast.success(`${action.payload.name} was deleted from your contacts.`);
+        // toast.success(`${action.payload.name} was deleted from your contacts.`);
       })
       .addCase(deleteContact.rejected, handleRejected);
   },
